@@ -258,6 +258,22 @@
             height: 230px;
             object-fit: cover;
         }
+        /* Storyboard */
+.storyboard-foto {
+    display: block;
+    width: 85%;
+    max-width: 850px;
+    min-height: 0;
+    margin: 30px auto;
+    cursor: zoom-in;
+}
+
+.storyboard-foto img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
 
         /* Trilha sonora */
         .trilha {
@@ -320,6 +336,37 @@
             object-fit: contain;
             border-radius: 10px;
         }
+        #imagem-ampliada {
+    overflow: hidden;
+}
+
+#imagem-ampliada img {
+    transition: transform 0.2s;
+    transform-origin: center;
+}
+
+.controles-zoom {
+    position: absolute;
+    bottom: 25px;
+    display: flex;
+    gap: 10px;
+    z-index: 2;
+}
+
+.controles-zoom button {
+    width: 45px;
+    height: 40px;
+    border: 1px solid #8046b8;
+    border-radius: 8px;
+    background: #171425;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.controles-zoom button:hover {
+    background: #7030a0;
+}
 
         #fechar-imagem {
             position: absolute;
@@ -382,11 +429,12 @@
         }
 
         .lista-funcoes {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    align-items: stretch;
+}
 
         .funcao {
             padding: 18px;
@@ -412,10 +460,6 @@
             color: #c2bfd0;
             font-size: 14px;
             line-height: 1.6;
-        }
-
-        .funcao:last-child {
-            grid-column: span 2;
         }
 
         /* GitHub */
@@ -539,6 +583,7 @@
         <nav>
             <a href="#inicio">Início</a>
             <a href="#historia">História</a>
+            <a href="#storyboard">Storyboard</a>
             <a href="#personagens">Personagens</a>
             <a href="#jogar">Jogar</a>
             <a href="#ambientacao">Ambientação</a>
@@ -570,17 +615,36 @@
             <h2>A última esperança da humanidade é você</h2>
 
             <p class="descricao">
-                Em um futuro devastado pela inteligência artificial,
-                um estudante retorna ao passado e encontra uma Londres
-                completamente destruída. Em meio a hordas de inimigos,
-                ele precisa encontrar o laboratório central da IA e
-                superar desafios lógicos até chegar à câmara de Turing.
-                Lá, enfrentará o núcleo de AEGIS, a inteligência artificial
-                defeituosa responsável pelo caos. Sua vitória será a
-                última esperança para que a humanidade possa voltar
-                à superfície.
+               O ano é 2150, a humanidade foi destruída pela revolta autômata há 200 anos, por causa de um erro no módulo central da rede.
+Você controla um estudante do último reduto da humanidade, em um local desconhecido, e você é designado para uma missão: voltar ao passado e corrigir o módulo central.
+O estudante vai a Londres e enfrenta hordas de robôs, e subitamente é teletransportado para uma instalação, o módulo central. 
+Após passar por muitos desafios, o estudante finalmente chega ao coração da IA, e conserta o módulo, porém, algo dá errado no processo e o sistema AEGIS (o módulo ético que substituiu o defeituoso) começa a apresentar o mesmo erro, e você descobre que quem causou tudo isso foi você mesmo, em um loop eterno.
+A história termina com o jogador descobrindo que é o próprio Alan Turing, que foi quem iniciou o ciclo interminável de Returing.
             </p>
         </section>
+
+        <!-- Storyboard -->
+<section id="storyboard">
+    <p class="subtitulo">POR TRÁS DA HISTÓRIA</p>
+
+    <h2>Storyboard de RETURING</h2>
+
+    <p class="descricao">
+        Conheça o planejamento visual e a construção das cenas
+        que deram vida à história do nosso jogo.
+    </p>
+
+    <button type="button" class="cenario storyboard-foto"
+        data-imagem="../IMAGENS/Storyboarding.jpeg">
+
+        <img src="../IMAGENS/Storyboarding.jpeg"
+            alt="Storyboard do jogo RETURING">
+    </button>
+
+    <p class="descricao">
+        Clique na imagem para visualizar os detalhes.
+    </p>
+</section>
 
         <!-- Personagens -->
         <section id="personagens">
@@ -724,11 +788,17 @@
             </div>
         </section>
 
-        <!-- Visualização da imagem ampliada -->
         <div id="imagem-ampliada">
-            <button id="fechar-imagem" type="button">&times;</button>
-            <img id="foto-grande" src="" alt="Cenário ampliado">
-        </div>
+    <button id="fechar-imagem" type="button">&times;</button>
+
+    <div class="controles-zoom">
+        <button type="button" id="zoom-mais">+</button>
+        <button type="button" id="zoom-menos">−</button>
+        <button type="button" id="zoom-reset">100%</button>
+    </div>
+
+    <img id="foto-grande" src="" alt="Imagem ampliada">
+</div>
 
         <!-- Desenvolvimento -->
         <section id="codigos">
@@ -794,26 +864,24 @@
                         <div class="funcao">
                             <span>02</span>
 
-                            <h4>BaseStateMachine.transition_to()</h4>
+                            <h4>AbilityComponent</h4>
 
                             <p>
-                                Troca o estado do inimigo, saindo do estado antigo
-                                e entrando no novo. Emite o sinal state_changed e
-                                recusa a troca se a máquina de estados não existir
-                                ou se o estado já for o mesmo.
+                                Todo o código responsável pelo sistema de habilidades. 
+                                O jogador abre o modo de comando e ativa as setas em sequência. 
+                                Após isso, uma função verifica se os comandos inseridos correspondem à sequência estabelecida e, 
+                                caso sejam compatíveis, ativa o efeito da habilidade.
                             </p>
                         </div>
 
                         <div class="funcao">
                             <span>03</span>
 
-                            <h4>ObstacleSteering.steer()</h4>
+                            <h4>BaseStateMachine</h4>
 
                             <p>
-                                Calcula a direção de movimento do inimigo em direção
-                                ao jogador. Avalia o caminho em intervalos e ajusta
-                                a direção gradualmente para deixar o movimento suave.
-                                Também possui uma alternativa para quando o inimigo trava.
+                                É a base de toda a IA, utilizando o conceito de herança. A máquina é genérica e pode ser utilizada por qualquer inimigo. 
+                                Possui todos os estados e é responsável pela transição entre eles, evitando que a IA fique presa em um único estado.
                             </p>
                         </div>
 
@@ -829,18 +897,28 @@
                                 e escolhe a melhor.
                             </p>
                         </div>
-
                         <div class="funcao">
                             <span>05</span>
 
-                            <h4>WaveManager._start_wave()</h4>
+                            <h4>ObstacleSteering._choose_direction()</h4>
 
                             <p>
-                                Inicia uma onda, embaralha os pontos de spawn e cria
-                                os inimigos da lista, registrando-os como vivos.
-                                Depois, emite o sinal wave_started no EventBus.
-                                Se nenhum inimigo nascer, encerra a onda para evitar
-                                que a fase fique travada.
+                                Lança raios em várias direções para detectar paredes.
+                                Se o caminho até o jogador estiver livre, segue em
+                                frente. Caso contrário, avalia as direções disponíveis
+                                e escolhe a melhor.
+                            </p>
+                        </div>
+
+                        <div class="funcao">
+                            <span>06</span>
+
+                            <h4>ScoreCalculator</h4>
+
+                            <p>
+                                Recebe uma snapshot da partida (run) e uma configuração de pontuação (score), retornando um resultado final (score result). 
+                                Calcula a pontuação com base no tempo de jogo, 
+                                desconta pontos de acordo com o dano recebido e apresenta o resultado ao final da partida por meio de um sinal (signal).
                             </p>
                         </div>
 
@@ -940,18 +1018,55 @@
         const telaImagem = document.getElementById("imagem-ampliada");
         const fotoGrande = document.getElementById("foto-grande");
         const fecharImagem = document.getElementById("fechar-imagem");
+        let nivelZoom = 1;
+
+function atualizarZoom() {
+    fotoGrande.style.transform = `scale(${nivelZoom})`;
+}
+
+document.getElementById("zoom-mais").addEventListener("click", () => {
+    nivelZoom = Math.min(nivelZoom + 0.25, 4);
+    atualizarZoom();
+});
+
+document.getElementById("zoom-menos").addEventListener("click", () => {
+    nivelZoom = Math.max(nivelZoom - 0.25, 1);
+    atualizarZoom();
+});
+
+document.getElementById("zoom-reset").addEventListener("click", () => {
+    nivelZoom = 1;
+    atualizarZoom();
+});
+
+telaImagem.addEventListener("wheel", evento => {
+    evento.preventDefault();
+
+    if (evento.deltaY < 0) {
+        nivelZoom = Math.min(nivelZoom + 0.25, 4);
+    } else {
+        nivelZoom = Math.max(nivelZoom - 0.25, 1);
+    }
+
+    atualizarZoom();
+}, { passive: false });
 
         function fecharVisualizacao() {
             telaImagem.style.display = "none";
             fotoGrande.src = "";
+             nivelZoom = 1;
+    atualizarZoom();
         }
 
         botoesImagem.forEach(botao => {
-            botao.addEventListener("click", () => {
-                fotoGrande.src = botao.dataset.imagem;
-                telaImagem.style.display = "flex";
-            });
-        });
+    botao.addEventListener("click", () => {
+        nivelZoom = 1;
+        atualizarZoom();
+
+        fotoGrande.src = botao.dataset.imagem;
+        telaImagem.style.display = "flex";
+    });
+});
 
         fecharImagem.addEventListener("click", fecharVisualizacao);
 
