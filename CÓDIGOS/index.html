@@ -26,11 +26,11 @@
         }
 
         h1, h2, h3, h4 {
-            font-weight: 600;
+            font-weight: 800;
         }
 
         p {
-            font-size: 18px;
+            font-size: 25px;
             line-height: 1.8;
         }
 
@@ -71,7 +71,7 @@
         nav a {
             flex-shrink: 0;
             color: #c4bfd6;
-            font-size: clamp(16px, 1.15vw, 21px);
+            font-size: 17px;
         }
 
         nav a:hover {
@@ -93,7 +93,7 @@
             margin-bottom: 15px;
             color: #60a5fa;
             font-family: 'Pixelify Sans', sans-serif;
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -134,22 +134,22 @@
         }
 
        .moldura-inicio {
-    flex: 0 1 500px;
-    width: 45%;
-    max-width: 500px;
-    overflow: hidden;
-    border: 2px solid #2563a6;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(37, 99, 166, 0.25);
-}
+            flex: 0 1 500px;
+            width: 45%;
+            max-width: 500px;
+            overflow: hidden;
+            border: 2px solid #2563a6;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(37, 99, 166, 0.25);
+       }
 
-.moldura-inicio img {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    clip-path: inset(4px 0 0 0);
-}
+        .moldura-inicio img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            clip-path: inset(4px 0 0 0);
+        }
 
         /* BOTÕES */
         .botao {
@@ -175,25 +175,47 @@
 
         /* STORYBOARD */
         .storyboard-foto {
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 85%;
-            max-width: 850px;
-            height: auto;
-            min-height: 0;
+            max-width: 1100px;
             margin: 30px auto;
             padding: 0;
-            overflow: visible;
+            background: transparent;
             cursor: zoom-in;
+            overflow: hidden; 
         }
 
         .storyboard-foto img {
             display: block;
             width: 100%;
             height: auto;
-            max-height: none;
-            object-fit: contain;
+            max-height: 80vh; 
+            object-fit: contain; 
         }
 
+        button.cenario.storyboard-foto {
+            display: block;
+            width: 85%;
+            max-width: 1100px;
+            height: auto !important; 
+            min-height: 0;
+            max-height: none;
+            margin: 30px auto;
+            padding: 0;
+            background: transparent;
+            cursor: zoom-in;
+            overflow: visible;
+        }
+
+        button.cenario.storyboard-foto img {
+            display: block;
+            width: 100%;
+            height: auto !important;
+            max-height: none;
+            object-fit: contain !important; 
+        }
         /* CARTÕES DE PERSONAGENS E EQUIPE */
         .cartoes {
             display: flex;
@@ -212,6 +234,7 @@
             background: linear-gradient(145deg, #171c2b, #10101b);
             text-align: center;
             transition: 0.3s;
+            font-size: 20px;
         }
 
         .cartao:hover {
@@ -240,19 +263,19 @@
         .cartao h3 {
             margin: 12px 0 6px;
             color: #dbeafe;
-            font-size: 15px;
+            font-size: 22px;
         }
 
         .cartao h4 {
             margin: 0 0 8px;
             color: #60a5fa;
-            font-size: 12px;
+            font-size: 19px;
         }
 
         .cartao p {
             margin: 0;
             color: #aaa8c0;
-            font-size: 12px;
+            font-size: 17px;
             line-height: 1.5;
         }
 
@@ -329,11 +352,13 @@
         .musica-item h4 {
             margin: 5px 0;
             color: #dbeafe;
+            font-size: 25px;
         }
 
         .musica-item p {
             color: #aaa8c0;
             line-height: 1.6;
+           
         }
 
         .trilha button {
@@ -343,7 +368,7 @@
             border-radius: 8px;
             background: linear-gradient(100deg, #2455a4, #1d4ed8);
             color: white;
-            font-size: 15px;
+            font-size: 20px;
             cursor: pointer;
         }
 
@@ -446,13 +471,13 @@
         .funcao h4 {
             margin: 8px 0;
             color: white;
-            font-size: 17px;
+            font-size: 20px;
             overflow-wrap: anywhere;
         }
 
         .funcao p {
             color: #c2bfd0;
-            font-size: 15px;
+            font-size: 19px;
             line-height: 1.7;
         }
 
@@ -513,61 +538,6 @@
             line-height: 1.6;
         }
 
-        /* DOWNLOADS */
-        #jogar {
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        .downloads {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-            max-width: 950px;
-            margin: 40px auto;
-        }
-
-        .botao-download {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            min-height: 110px;
-            padding: 20px;
-            border: 1px solid #263b5a;
-            border-radius: 12px;
-            background: #121a2a;
-            color: white;
-            font-family: inherit;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .botao-download span {
-            font-size: 18px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .botao-download small {
-            color: #60a5fa;
-            font-size: 13px;
-        }
-
-        a.botao-download:hover {
-            transform: translateY(-5px);
-            border-color: #60a5fa;
-            background: #192943;
-            box-shadow: 0 0 18px rgba(59, 130, 246, 0.2);
-        }
-
-        .botao-download.indisponivel {
-            border-style: dashed;
-            opacity: 0.45;
-            cursor: not-allowed;
-        }
-
         /* GITHUB */
         #github {
             background: linear-gradient(120deg, #10182b, #10213b);
@@ -589,6 +559,7 @@
 
         footer p {
             line-height: 1.6;
+            font-size: 17px;
         }
 
         .direitos {
@@ -664,10 +635,6 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .downloads {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
             .tutorial video {
                 width: 100%;
             }
@@ -680,8 +647,7 @@
         }
 
         @media (max-width: 480px) {
-            .ferramentas-container,
-            .downloads {
+            .ferramentas-container {
                 grid-template-columns: 1fr;
             }
         }
@@ -695,31 +661,6 @@
                 letter-spacing: 2px;
             }
         }
-        /* STORYBOARD */
-.storyboard-foto {
-    display: block;
-    width: 85%;
-    max-width: 1100px;
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
-    aspect-ratio: auto !important;
-    margin: 30px auto;
-    padding: 0;
-    overflow: visible !important;
-    background: transparent;
-    cursor: zoom-in;
-}
-
-.storyboard-foto img {
-    display: block;
-    position: static;
-    width: 100%;
-    height: auto !important;
-    min-height: 0;
-    max-height: none !important;
-    object-fit: contain;
-}
     </style>
 </head>
 
@@ -739,7 +680,6 @@
             <a href="#codigos">Desenvolvimento</a>
             <a href="#ferramentas">Ferramentas</a>
             <a href="#equipe">Equipe</a>
-            <a href="#jogar">Jogar</a>
             <a href="#github">Github</a>
         </nav>
     </header>
@@ -1010,7 +950,6 @@
         alt="Código de programação do jogo RETURING">
 
 </button>
-
             </div>
 
         </section>
@@ -1110,52 +1049,6 @@
                     <h3>Ícaro</h3>
                     <h4>Programação</h4>
                     <p>Código do jogo.</p>
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- JOGAR -->
-        <section id="jogar">
-
-            <p class="subtitulo">ESCOLHA SUA PLATAFORMA</p>
-
-            <h2>Jogue RETURING</h2>
-
-            <p class="descricao">
-                Prepare-se para viajar pelo tempo!
-                Escolha sua plataforma e faça o download.
-            </p>
-
-            <div class="downloads">
-
-                <a href="../JOGO/Returing-Android.apk"
-                    class="botao-download" download>
-                    <span>ANDROID</span>
-                    <small>Download APK</small>
-                </a>
-
-                <a href="../JOGO/Returing.exe"
-                    class="botao-download" download>
-                    <span>WINDOWS</span>
-                    <small>Download EXE</small>
-                </a>
-
-                <a href="../JOGO/Returing-Linux.tar"
-                    class="botao-download" download>
-                    <span>LINUX</span>
-                    <small>Download TAR</small>
-                </a>
-
-                <div class="botao-download indisponivel">
-                    <span>iOS</span>
-                    <small>Em breve</small>
-                </div>
-
-                <div class="botao-download indisponivel">
-                    <span>MAC</span>
-                    <small>Em breve</small>
                 </div>
 
             </div>
