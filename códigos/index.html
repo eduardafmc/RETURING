@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RETURING</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&family=Pixelify+Sans:wght@400;500;600;700&display=swap');
+
+        /* CONFIGURAÇÕES GERAIS */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #080811;
+            color: #f5f3ff;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 18px;
+        }
+
+        h1, h2, h3, h4, nav a, button, .botao {
+            font-family: 'Pixelify Sans', sans-serif;
+            text-align:center;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 800;
+        }
+
+        p {
+            font-size: 25px;
+            line-height: 1.8;
+        }
+
+        a {
+            color: #bfdbfe;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        /* CABEÇALHO E MENU */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 15px 4%;
+            background: #0c0c18;
+            border-bottom: 1px solid #1e3a5f;
+        }
+
+        header h1 {
+            flex-shrink: 0;
+            margin: 0;
+            color: #60a5fa;
+            font-size: 34px;
+            letter-spacing: 3px;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: flex-end;
+            gap: clamp(8px, 0.8vw, 15px);
+            white-space: nowrap;
+        }
+
+        nav a {
+            flex-shrink: 0;
+            color: #c4bfd6;
+            font-size: 17px;
+        }
+
+        nav a:hover {
+            color: #60a5fa;
+        }
+
+        /* ESTRUTURA DAS SEÇÕES */
+        section {
+            padding: 75px 8%;
+            text-align: center;
+        }
+
+        section h2 {
+            margin-top: 12px;
+            font-size: 32px;
+        }
+
+        .subtitulo {
+            margin-bottom: 15px;
+            color: #60a5fa;
+            font-family: 'Pixelify Sans', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+            text-align: center;
+        }
+
+        .descricao {
+            max-width: 750px;
+            margin: 20px auto;
+            color: #aaa8c0;
+            line-height: 1.9;
+        }
+
+        /* INÍCIO */
+        #inicio {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            width: 100%;
+            min-height: 65vh;
+            padding: 75px 8%;
+            overflow: visible;
+            background: linear-gradient(120deg, #080811, #10213b, #10182b);
+            text-align: left;
+        }
+
+        #inicio .apresentacao {
+            flex: 1 1 50%;
+            min-width: 0;
+            max-width: 520px;
+        }
+
+        #inicio h2 {
+            margin: 20px 0;
+            font-size: 52px;
+            line-height: 1.15;
+        }
+
+       .moldura-inicio {
+            flex: 0 1 500px;
+            width: 45%;
+            max-width: 500px;
+            overflow: hidden;
+            border: 2px solid #2563a6;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(37, 99, 166, 0.25);
+       }
+
+        .moldura-inicio img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            clip-path: inset(4px 0 0 0);
+        }
+
+        /* BOTÕES */
+        .botao {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 13px 22px;
+            border-radius: 8px;
+            background: linear-gradient(100deg, #2455a4, #1d4ed8);
+            color: white;
+            transition: 0.3s;
+        }
+
+        .botao:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(100deg, #3b82f6, #2563eb);
+        }
+
+        /* HISTÓRIA E AMBIENTAÇÃO */
+        #historia,
+        #ambientacao {
+            background: #0c0c18;
+            text-align:justify;
+        }
+
+        /* STORYBOARD */
+        .storyboard-foto {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 85%;
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0;
+            background: transparent;
+            cursor: zoom-in;
+            overflow: hidden; 
+        }
+
+        .storyboard-foto img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 80vh; 
+            object-fit: contain; 
+        }
+
+        button.cenario.storyboard-foto {
+            display: block;
+            width: 85%;
+            max-width: 1100px;
+            height: auto !important; 
+            min-height: 0;
+            max-height: none;
+            margin: 30px auto;
+            padding: 0;
+            background: transparent;
+            cursor: zoom-in;
+            overflow: visible;
+        }
+
+        button.cenario.storyboard-foto img {
+            display: block;
+            width: 100%;
+            height: auto !important;
+            max-height: none;
+            object-fit: contain !important; 
+        }
+        /* CARTÕES DE PERSONAGENS E EQUIPE */
+        .cartoes {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .cartao {
+            flex: 1;
+            min-width: 0;
+            padding: 12px;
+            border: 1px solid #263b5a;
+            border-radius: 12px;
+            background: linear-gradient(145deg, #171c2b, #10101b);
+            text-align: center;
+            transition: 0.3s;
+            font-size: 20px;
+        }
+
+        .cartao:hover {
+            transform: translateY(-4px);
+            border-color: #3b82f6;
+        }
+
+        .cartao video {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            height: 250px;
+            margin: 0 auto;
+            border-radius: 10px;
+            object-fit: contain;
+        }
+
+        .cartao img {
+            display: block;
+            width: 100%;
+            height: 140px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .cartao h3 {
+            margin: 12px 0 6px;
+            color: #dbeafe;
+            font-size: 22px;
+        }
+
+        .cartao h4 {
+            margin: 0 0 8px;
+            color: #60a5fa;
+            font-size: 19px;
+        }
+
+        .cartao p {
+            margin: 0;
+            color: #aaa8c0;
+            font-size: 17px;
+            line-height: 1.5;
+        }
+
+        /* TUTORIAL */
+        .tutorial {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 35px auto;
+        }
+
+        .tutorial video {
+            display: block;
+            width: 85%;
+            max-width: 850px;
+            height: auto;
+            border: 2px solid #2563a6;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(37, 99, 166, 0.3);
+        }
+
+        /* CENÁRIOS */
+        .cenarios {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            max-width: 950px;
+            margin: 35px auto;
+        }
+
+        .cenario {
+            min-height: 230px;
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid #2563a6;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #171c2b, #10182b);
+            color: #bfdbfe;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .cenario:hover {
+            transform: translateY(-5px);
+            border-color: #60a5fa;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .cenario img {
+            display: block;
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        /* TRILHA SONORA */
+        .trilha {
+            max-width: 650px;
+            margin: 45px auto 0;
+            padding: 25px;
+            border: 1px solid #263b5a;
+            border-radius: 12px;
+            background: #171c2b;
+        }
+
+        .musica-item {
+            padding: 15px 0;
+        }
+
+        .musica-item + .musica-item {
+            border-top: 1px solid #263b5a;
+        }
+
+        .musica-item h4 {
+            margin: 5px 0;
+            color: #dbeafe;
+            font-size: 25px;
+        }
+
+        .musica-item p {
+            color: #aaa8c0;
+            line-height: 1.6;
+           
+        }
+
+        .trilha button {
+            margin-top: 10px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(100deg, #2455a4, #1d4ed8);
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .trilha button:hover {
+            background: linear-gradient(100deg, #3b82f6, #2563eb);
+        }
+
+        /* VISUALIZAÇÃO E ZOOM DE IMAGENS */
+        #imagem-ampliada {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.95);
+        }
+
+        #imagem-ampliada img {
+            max-width: 95%;
+            max-height: 85vh;
+            border-radius: 10px;
+            object-fit: contain;
+            transform-origin: center;
+            transition: transform 0.2s;
+        }
+
+        #fechar-imagem {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            border: none;
+            background: none;
+            color: white;
+            font-size: 35px;
+            cursor: pointer;
+        }
+
+        .controles-zoom {
+            position: absolute;
+            bottom: 25px;
+            z-index: 2;
+            display: flex;
+            gap: 10px;
+        }
+
+        .controles-zoom button {
+            width: 45px;
+            height: 40px;
+            border: 1px solid #2563a6;
+            border-radius: 8px;
+            background: #171c2b;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .controles-zoom button:hover {
+            background: #2455a4;
+        }
+                /* DESENVOLVIMENTO */
+        .desenvolvimento {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 30px;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        .lista-funcoes {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .funcao {
+            padding: 22px;
+            border: 1px solid #263b5a;
+            border-radius: 12px;
+            background: #121a2a;
+            text-align: left;
+            transition: 0.3s;
+        }
+
+        .funcao:hover {
+            transform: translateY(-4px);
+            border-color: #3b82f6;
+            box-shadow: 0 0 18px rgba(59, 130, 246, 0.2);
+        }
+
+        .funcao span {
+            color: #60a5fa;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .funcao h4 {
+            margin: 8px 0;
+            color: white;
+            font-size: 20px;
+            overflow-wrap: anywhere;
+        }
+
+        .funcao p {
+            color: #c2bfd0;
+            font-size: 19px;
+            line-height: 1.7;
+        }
+
+        .imagem-codigo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-codigo img {
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border: 1px solid #263b5a;
+            border-radius: 12px;
+            object-fit: contain;
+            box-shadow: 0 0 20px rgba(37, 99, 166, 0.2);
+        }
+
+        /* FERRAMENTAS */
+        .ferramentas-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        .ferramenta {
+            padding: 25px;
+            border: 1px solid #263b5a;
+            border-radius: 12px;
+            background: #121a2a;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .ferramenta:hover {
+            transform: translateY(-5px);
+            border-color: #60a5fa;
+        }
+
+        .ferramenta img {
+            width: 100%;
+            height: 110px;
+            margin-bottom: 15px;
+            object-fit: contain;
+        }
+
+        .ferramenta h3 {
+            margin-bottom: 10px;
+            color: #60a5fa;
+        }
+
+        .ferramenta p {
+            color: #c2bfd0;
+            line-height: 1.6;
+        }
+
+        /* GITHUB */
+        #github {
+            background: linear-gradient(120deg, #10182b, #10213b);
+        }
+
+        /* RODAPÉ */
+        footer {
+            padding: 25px;
+            border-top: 1px solid #263b5a;
+            background: #0c0c18;
+            color: #aaa8c0;
+            text-align: center;
+        }
+
+        footer h3 {
+            color: #60a5fa;
+            letter-spacing: 3px;
+        }
+
+        footer p {
+            line-height: 1.6;
+            font-size: 17px;
+        }
+
+        .direitos {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #263b5a;
+            color: #77738c;
+            font-size: 12px;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 900px) {
+            .cartoes {
+                flex-wrap: wrap;
+            }
+
+            .cartao {
+                flex: 1 1 150px;
+                max-width: 220px;
+            }
+        }
+
+        @media (max-width: 750px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                width: 100%;
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 8px;
+            }
+
+            #inicio {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                gap: 30px;
+            }
+
+            #inicio .apresentacao {
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            #inicio h2 {
+                font-size: 38px;
+            }
+
+            #inicio .moldura-inicio {
+            flex: none;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            }
+
+            section {
+                padding: 55px 6%;
+            }
+
+            .desenvolvimento {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .imagem-codigo img {
+                max-width: 100%;
+            }
+
+            .ferramentas-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tutorial video {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .cenarios {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .ferramentas-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 400px) {
+            #inicio h2 {
+                font-size: 32px;
+            }
+
+            .subtitulo {
+                letter-spacing: 2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <h1>RETURING</h1>
+
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#historia">História</a>
+            <a href="#storyboard">Storyboard</a>
+            <a href="#personagens">Personagens</a>
+            <a href="#tutorial">Tutorial</a>
+            <a href="#ambientacao">Ambientação</a>
+            <a href="#codigos">Desenvolvimento</a>
+            <a href="#ferramentas">Ferramentas</a>
+            <a href="#equipe">Equipe</a>
+            <a href="#download">Download</a>
+            <a href="#documentacao">Documentação</a>
+            <a href="#github">Github</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- INÍCIO -->
+        <section id="inicio">
+            <div class="apresentacao">
+                <p class="subtitulo">
+                    O DESTINO DA HUMANIDADE ESTÁ EM SUAS MÃOS
+                </p>
+
+                <h2>O passado é a única esperança para o futuro.</h2>
+            </div>
+        <div class="moldura-inicio">
+        <img src="../IMAGENS/Tela Inicial RETURING.jpeg" alt="Capa do jogo RETURING">
+        </div>
+        </section>
+
+        <!-- HISTÓRIA -->
+        <section id="historia">
+            <p class="subtitulo">O FIM DA HUMANIDADE</p>
+
+            <h2>A última esperança da humanidade é você</h2>
+
+            <p class="descricao">
+                O ano é 2150, a humanidade foi destruída pela revolta autômata há 200 anos, por causa de um erro no módulo central da rede.
+                Você controla um estudante do último reduto da humanidade, em um local desconhecido, e você é designado para uma missão: voltar ao passado e corrigir o módulo central.
+                O estudante vai a Londres e enfrenta hordas de robôs, e subitamente é teletransportado para uma instalação, o módulo central.
+                Após passar por muitos desafios, o estudante finalmente chega ao coração da IA, e conserta o módulo, porém, algo dá errado no processo e o sistema AEGIS (o módulo ético que substituiu o defeituoso) começa a apresentar o mesmo erro, e você descobre que quem causou tudo isso foi você mesmo, em um loop eterno.
+                A história termina com o jogador descobrindo que é o próprio Alan Turing, que foi quem iniciou o ciclo interminável de Returing.
+            </p>
+        </section>
+
+        <!-- STORYBOARD -->
+        <section id="storyboard">
+            <p class="subtitulo">POR TRÁS DA HISTÓRIA</p>
+
+            <h2>Storyboard de RETURING</h2>
+
+            <p class="descricao">
+                Conheça o planejamento visual e a construção das cenas
+                que deram vida à história do nosso jogo.
+            </p>
+
+            <button type="button" class="cenario storyboard-foto"
+                data-imagem="../IMAGENS/Storyboarding.jpeg">
+
+                <img src="../IMAGENS/Storyboarding.jpeg"
+                    alt="Storyboard do jogo RETURING">
+
+            </button>
+
+            <p class="descricao">
+                Clique na imagem para visualizar os detalhes.
+            </p>
+        </section>
+
+        <!-- PERSONAGENS -->
+        <section id="personagens">
+            <p class="subtitulo">OS SALVADORES (OU CARRASCOS) DA HUMANIDADE</p>
+
+            <h2>Personagens de RETURING</h2>
+
+            <div class="cartoes">
+
+                <div class="cartao">
+                    <video autoplay loop muted playsinline>
+                        <source src="../IMAGENS/AlanTuring.mp4" type="video/mp4">
+                    </video>
+                    <h3>Alan Turing (ou estudante)</h3>
+                </div>
+
+                <div class="cartao">
+                    <video autoplay loop muted playsinline>
+                        <source src="../IMAGENS/InimigoTank.mp4" type="video/mp4">
+                    </video>
+                    <h3>Inimigo Tank</h3>
+                </div>
+
+                <div class="cartao">
+                    <video autoplay loop muted playsinline>
+                        <source src="../IMAGENS/Atirador.mp4" type="video/mp4">
+                    </video>
+                    <h3>Atirador</h3>
+                </div>
+
+                <div class="cartao">
+                    <video autoplay loop muted playsinline>
+                        <source src="../IMAGENS/Perseguidor.mp4" type="video/mp4">
+                    </video>
+                    <h3>Perseguidor</h3>
+                </div>
+
+                <div class="cartao">
+                    <video autoplay loop muted playsinline>
+                        <source src="../IMAGENS/Chefão.mp4" type="video/mp4">
+                    </video>
+                    <h3>Chefão</h3>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TUTORIAL -->
+        <section id="tutorial">
+            <p class="subtitulo">SOBREVIVA AOS DESAFIOS</p>
+
+            <h2>Como jogar</h2>
+
+            <p class="descricao">
+                Aprenda os controles que mudarão o destino do mundo.
+            </p>
+
+            <div class="tutorial">
+                <video controls>
+                    <source src="../IMAGENS/TutorialVideo.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+
+        <!-- AMBIENTAÇÃO -->
+        <section id="ambientacao">
+            <p class="subtitulo">EXPLORE O UNIVERSO DO JOGO</p>
+
+            <h2>Ambientação de RETURING</h2>
+
+            <p class="descricao">
+                Conheça os cenários e a atmosfera que dão vida ao nosso jogo.
+            </p>
+
+            <div class="cenarios">
+
+                <button type="button" class="cenario"
+                    data-imagem="../IMAGENS/Cenario1.jpeg">
+
+                    <img src="../IMAGENS/Cenario1.jpeg"
+                        alt="Primeiro cenário de RETURING">
+
+                </button>
+
+                <button type="button" class="cenario"
+                    data-imagem="../IMAGENS/Cenario2.jpeg">
+
+                    <img src="../IMAGENS/Cenario2.jpeg"
+                        alt="Segundo cenário de RETURING">
+
+                </button>
+
+            </div>
+
+            <!-- TRILHA SONORA -->
+            <div class="trilha">
+                <p class="subtitulo">TRILHA SONORA</p>
+
+                <p class="descricao">
+                    Conheça as composições que acompanham nossa aventura.
+                </p>
+
+                <div class="musica-item">
+                    <h4>Menu</h4>
+
+                    <p>
+                        Camille Saint-Saëns — Concerto para Violino nº 3,
+                        terceiro movimento.
+                    </p>
+
+                    <audio id="musica-menu">
+                        <source src="../IMAGENS/Concerto.wav" type="audio/wav">
+                    </audio>
+
+                    <button type="button"
+                        onclick="tocarMusica('musica-menu', this)">
+                        ▶ Tocar música
+                    </button>
+                </div>
+
+                <div class="musica-item">
+                    <h4>Boss</h4>
+
+                    <p>
+                        Antonio Vivaldi — Inverno, gravação de Kazuhito Yamashita.
+                    </p>
+
+                    <audio id="musica-boss">
+                        <source src="../IMAGENS/BossMusic.wav" type="audio/wav">
+                    </audio>
+
+                    <button type="button"
+                        onclick="tocarMusica('musica-boss', this)">
+                        ▶ Tocar música
+                    </button>
+                </div>
+            </div>
+        </section>
+                <!-- VISUALIZAÇÃO DE IMAGENS -->
+        <div id="imagem-ampliada">
+
+            <button id="fechar-imagem" type="button">&times;</button>
+
+            <div class="controles-zoom">
+                <button type="button" id="zoom-mais">+</button>
+                <button type="button" id="zoom-menos">−</button>
+                <button type="button" id="zoom-reset">100%</button>
+            </div>
+
+            <img id="foto-grande" src="" alt="Imagem ampliada">
+
+        </div>
+
+        <!-- DESENVOLVIMENTO -->
+        <section id="codigos">
+
+            <p class="subtitulo">POR TRÁS DO JOGO</p>
+
+            <h2>Desenvolvimento</h2>
+
+            <p class="descricao">
+                Conheça algumas das principais funções responsáveis
+                pelo funcionamento e pela inteligência dos sistemas de RETURING.
+            </p>
+
+            <div class="desenvolvimento">
+
+                <!-- CARTÕES DOS CÓDIGOS -->
+                <div class="lista-funcoes">
+
+                    <div class="funcao">
+                        <span>01</span>
+
+                        <h4>AbilityComponent</h4>
+
+                        <p>
+                            Responsável pelo sistema de habilidades do jogador.
+                            O jogador abre o modo de comando e ativa as setas em sequência.
+                            Uma função verifica se os comandos inseridos correspondem
+                            à sequência estabelecida e, caso sejam compatíveis,
+                            ativa o efeito da habilidade.
+                        </p>
+                    </div>
+
+                    <div class="funcao">
+                        <span>02</span>
+
+                        <h4>ObstacleSteering._choose_direction()</h4>
+
+                        <p>
+                            Responsável pela escolha de direção dos inimigos
+                            ao encontrar obstáculos. O sistema detecta paredes
+                            e verifica os caminhos disponíveis. Caso o caminho
+                            até o jogador esteja livre, o inimigo segue em frente.
+                            Caso contrário, avalia outras direções e escolhe
+                            a melhor alternativa.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- IMAGEM DO CÓDIGO -->
+<button type="button" class="cenario imagem-codigo"
+    data-imagem="../IMAGENS/Código.jpeg">
+
+    <img src="../IMAGENS/Código.jpeg"
+        alt="Código de programação do jogo RETURING">
+
+</button>
+            </div>
+
+        </section>
+
+        <!-- FERRAMENTAS -->
+        <section id="ferramentas">
+
+            <p class="subtitulo">RECURSOS UTILIZADOS</p>
+
+            <h2>Ferramentas</h2>
+
+            <p class="descricao">
+                Conheça os principais programas e tecnologias
+                utilizados na criação de RETURING.
+            </p>
+
+            <div class="ferramentas-container">
+
+                <div class="ferramenta">
+                    <img src="../IMAGENS/Godot.png" alt="Godot 4">
+                    <h3>Godot 4</h3>
+                    <p>Motor utilizado para o desenvolvimento do jogo.</p>
+                </div>
+
+                <div class="ferramenta">
+                    <img src="../IMAGENS/gd script.png" alt="GDScript">
+                    <h3>GDScript</h3>
+                    <p>Linguagem de programação utilizada no projeto.</p>
+                </div>
+
+                <div class="ferramenta">
+                    <img src="../IMAGENS/AndroidSDK.jpe" alt="Android SDK">
+                    <h3>Android SDK</h3>
+                    <p>Conjunto de ferramentas utilizado na exportação para Android.</p>
+                </div>
+
+                <div class="ferramenta">
+                    <img src="../IMAGENS/Dotpict.png" alt="dotpict">
+                    <h3>dotpict</h3>
+                    <p>Aplicativo utilizado na criação de artes em pixel art.</p>
+                </div>
+
+                <div class="ferramenta">
+                    <img src="../IMAGENS/IbisPaint.jpe" alt="ibisPaint">
+                    <h3>ibisPaint</h3>
+                    <p>Aplicativo utilizado para criação e edição de ilustrações.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- EQUIPE -->
+        <section id="equipe">
+
+            <p class="subtitulo">POR TRÁS DO PROJETO</p>
+
+            <h2>Nossa equipe</h2>
+
+            <div class="cartoes">
+
+                <div class="cartao">
+                    <img src="../IMAGENS/Ana.jpeg" alt="Foto da Ana">
+
+                    <h3>Ana Beatriz</h3>
+                    <h4>Design</h4>
+                    <p>Criação das sprites.</p>
+                </div>
+
+                <div class="cartao">
+                    <img src="../IMAGENS/Alice.jpeg" alt="Foto da Alice">
+
+                    <h3>Alice</h3>
+                    <h4>Roteiro e organização</h4>
+                    <p>Criação do storyboard e da documentação.</p>
+                </div>
+
+                <div class="cartao">
+                    <img src="../IMAGENS/Eduarda.jpeg" alt="Foto da Eduarda">
+
+                    <h3>Eduarda</h3>
+                    <h4>Programação</h4>
+                    <p>Criação do site.</p>
+                </div>
+
+                <div class="cartao">
+                    <img src="../IMAGENS/Gustavo.jpeg" alt="Foto do Gustavo">
+
+                    <h3>Gustavo</h3>
+                    <h4>Programação e trilha sonora</h4>
+                    <p>Desenvolvimento da interface, cutscenes e efeitos sonoros.</p>
+                </div>
+
+                <div class="cartao">
+                    <img src="../IMAGENS/Ícaro.jpeg" alt="Foto do Ícaro">
+
+                    <h3>Ícaro</h3>
+                    <h4>Programação</h4>
+                    <p>Código do jogo.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+<!-- DOWNLOAD -->
+<section id="download">
+
+    <p class="subtitulo">PREPARE-SE PARA JOGAR</p>
+
+    <h2>Baixe RETURING</h2>
+
+    <p class="descricao">
+        Faça o download do jogo e embarque nessa aventura.
+        O futuro da humanidade depende de você!
+    </p>
+
+    <a class="botao"
+       href="https://drive.google.com/drive/u/1/folders/1NQpKEup4KyXYShkUSw1h4h0qpZFMBoE9"
+       target="_blank"
+       rel="noopener noreferrer">
+
+        <span>↓</span> DOWNLOAD DO JOGO
+
+    </a>
+
+</section>
+
+
+<!-- DOCUMENTAÇÃO -->
+<section id="documentacao">
+
+    <p class="subtitulo">CONHEÇA O DESENVOLVIMENTO</p>
+
+    <h2>Documentação do projeto</h2>
+
+    <p class="descricao">
+        Acesse a documentação de RETURING e conheça
+        os registros, processos e informações sobre
+        o desenvolvimento do jogo.
+    </p>
+
+    <a class="botao"
+       href="../IMAGENS/documentação.returing.pdf"
+       target="_blank"
+       rel="noopener noreferrer">
+
+        📄 ACESSAR DOCUMENTAÇÃO
+
+    </a>
+
+</section>
+
+        <!-- GITHUB -->
+        <section id="github">
+
+            <p class="subtitulo">ACOMPANHE O DESENVOLVIMENTO</p>
+
+            <h2>Conheça nosso projeto</h2>
+
+            <p class="descricao">
+                Acompanhe o desenvolvimento do RETURING.
+            </p>
+
+            <a class="botao"
+                href="https://github.com/Gustavo-H632/Returing/tree/main"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                Acessar GitHub ↗
+
+            </a>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+
+        <h3>RETURING</h3>
+
+        <p>
+            Projeto criado para o IFSP Campus São Paulo, para o curso
+            de Desenvolvimento de Sistemas, Turma 113.
+        </p>
+
+        <p class="direitos">
+            © 2026 RETURING. Todos os direitos reservados.
+        </p>
+
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // AMPLIAR IMAGENS DO STORYBOARD E DOS CENÁRIOS
+
+        const botoesImagem = document.querySelectorAll(".cenario");
+        const telaImagem = document.getElementById("imagem-ampliada");
+        const fotoGrande = document.getElementById("foto-grande");
+        const fecharImagem = document.getElementById("fechar-imagem");
+
+        let nivelZoom = 1;
+
+        function atualizarZoom() {
+            fotoGrande.style.transform = `scale(${nivelZoom})`;
+        }
+
+        document.getElementById("zoom-mais").addEventListener("click", () => {
+            nivelZoom = Math.min(nivelZoom + 0.25, 4);
+            atualizarZoom();
+        });
+
+        document.getElementById("zoom-menos").addEventListener("click", () => {
+            nivelZoom = Math.max(nivelZoom - 0.25, 1);
+            atualizarZoom();
+        });
+
+        document.getElementById("zoom-reset").addEventListener("click", () => {
+            nivelZoom = 1;
+            atualizarZoom();
+        });
+
+        telaImagem.addEventListener("wheel", evento => {
+
+            evento.preventDefault();
+
+            if (evento.deltaY < 0) {
+                nivelZoom = Math.min(nivelZoom + 0.25, 4);
+            } else {
+                nivelZoom = Math.max(nivelZoom - 0.25, 1);
+            }
+
+            atualizarZoom();
+
+        }, { passive: false });
+
+        function fecharVisualizacao() {
+
+            telaImagem.style.display = "none";
+            fotoGrande.src = "";
+
+            nivelZoom = 1;
+            atualizarZoom();
+
+        }
+
+        botoesImagem.forEach(botao => {
+
+            botao.addEventListener("click", () => {
+
+                nivelZoom = 1;
+                atualizarZoom();
+
+                fotoGrande.src = botao.dataset.imagem;
+                telaImagem.style.display = "flex";
+
+            });
+
+        });
+
+        fecharImagem.addEventListener("click", fecharVisualizacao);
+
+        telaImagem.addEventListener("click", evento => {
+
+            if (evento.target === telaImagem) {
+                fecharVisualizacao();
+            }
+
+        });
+
+        document.addEventListener("keydown", evento => {
+
+            if (evento.key === "Escape") {
+                fecharVisualizacao();
+            }
+
+        });
+
+        // CONTROLAR AS MÚSICAS
+
+        function tocarMusica(id, botao) {
+
+            const musicaSelecionada = document.getElementById(id);
+            const todasMusicas = document.querySelectorAll(".trilha audio");
+            const todosBotoes = document.querySelectorAll(".musica-item button");
+
+            if (musicaSelecionada.paused) {
+
+                todasMusicas.forEach(audio => audio.pause());
+
+                todosBotoes.forEach(item => {
+                    item.textContent = "▶ Tocar música";
+                });
+
+                musicaSelecionada.play().then(() => {
+
+                    botao.textContent = "⏸ Pausar música";
+
+                }).catch(() => {
+
+                    botao.textContent = "▶ Tocar música";
+
+                });
+
+            } else {
+
+                musicaSelecionada.pause();
+                botao.textContent = "▶ Tocar música";
+
+            }
+
+        }
+
+        // RESTAURAR O BOTÃO QUANDO A MÚSICA TERMINAR
+
+        document.querySelectorAll(".trilha audio").forEach(audio => {
+
+            audio.addEventListener("ended", () => {
+
+                const botao = document.querySelector(
+                    `.musica-item button[onclick*="${audio.id}"]`
+                );
+
+                if (botao) {
+                    botao.textContent = "▶ Tocar música";
+                }
+
+            });
+
+        });
+
+        // ATUALIZAR O BOTÃO QUANDO A MÚSICA FOR PAUSADA
+
+        document.querySelectorAll(".trilha audio").forEach(audio => {
+
+            audio.addEventListener("pause", () => {
+
+                const botao = document.querySelector(
+                    `.musica-item button[onclick*="${audio.id}"]`
+                );
+
+                if (botao && audio.ended === false) {
+                    botao.textContent = "▶ Tocar música";
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
